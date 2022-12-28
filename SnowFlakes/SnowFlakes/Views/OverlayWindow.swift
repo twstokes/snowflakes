@@ -16,14 +16,8 @@ class OverlayWindow: NSPanel {
         // don't interact with Exposé, exist on all Spaces
         collectionBehavior = [.stationary, .canJoinAllSpaces, .fullScreenAuxiliary]
 
-
-        // TODO - feature to choose the level - over everything (shielding level) or something like base level (can't bring to foreground, only desktop background)
-        // note: if init(0) (baseWindow) level, we may need to tell it to not come to the foreground initially - this way it stays in the background.
-
-        // check out CGWindowLevelKey for ideas
         // keep the window above everything at all times
         let shieldingLevel = CGShieldingWindowLevel()
         level = .init(Int(shieldingLevel))
-//        level = .init(0)
     }
 }

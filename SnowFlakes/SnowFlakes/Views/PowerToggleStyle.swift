@@ -6,7 +6,7 @@ import SwiftUI
 struct PowerToggleStyle: ToggleStyle {
     @State var color: Color = .clear
 
-    let activeColor = Color.accentColor
+    private let activeColor = Color.accentColor
     
     func makeBody(configuration: Configuration) -> some View {
         Button {
