@@ -57,8 +57,8 @@ struct SettingsView: View {
             }
 
             if showingAdvanced {
-                Slider(value: $appSettings.fps, in: 15...60, step: 15) {
-                    Text("CPU")
+                Slider(value: $appSettings.fps, in: 15...60, step: 5) {
+                    Text("\(Int(appSettings.fps)) FPS")
                         .bold()
                 }
             }
