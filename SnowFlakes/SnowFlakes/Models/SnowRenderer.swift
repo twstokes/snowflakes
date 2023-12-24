@@ -35,7 +35,7 @@ final class SnowRenderer {
             .sink(receiveValue: changeSize)
             .store(in: &cancellables)
 
-        appSettings.$birthrate
+        appSettings.$birthRate
             .receive(on: RunLoop.main)
             .sink(receiveValue: changeBirthrate)
             .store(in: &cancellables)
@@ -50,7 +50,7 @@ final class SnowRenderer {
         appSettings.$mode
             .receive(on: RunLoop.main)
             .sink { [weak self] mode in
-                self?.changeToMode(mode, size: appSettings.size, birthrate: appSettings.birthrate) // NOTE: cleanup, isolate mode?
+                self?.changeToMode(mode, size: appSettings.size, birthrate: appSettings.birthRate) // NOTE: cleanup, isolate mode?
             }
             .store(in: &cancellables)
 
@@ -75,7 +75,7 @@ final class SnowRenderer {
             let scene = appSettings.mode.scene(size: screen.frame.size)
             scene.emitters.forEach {
                 $0.particleScale = CGFloat(appSettings.size / 10)
-                $0.particleBirthRate = CGFloat(appSettings.birthrate)
+                $0.particleBirthRate = CGFloat(appSettings.birthRate)
             }
 
             view.presentScene(scene)

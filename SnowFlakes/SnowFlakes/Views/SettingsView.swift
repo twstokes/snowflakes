@@ -32,7 +32,7 @@ struct SettingsView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 25, height: 20)
-                Slider(value: $appSettings.birthrate, in: 1...5, step: 1)
+                Slider(value: $appSettings.birthRate, in: 1...5, step: 1)
                 Image("dense")
                     .resizable()
                     .aspectRatio(contentMode: .fit)

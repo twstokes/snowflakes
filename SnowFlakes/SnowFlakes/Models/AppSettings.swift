@@ -5,7 +5,7 @@ final class AppSettings: ObservableObject {
     @Published var runFrequency: RunFrequency
     @Published var fps: Float
     @Published var mode: EmitterMode
-    @Published var birthrate: Float
+    @Published var birthRate: Float
     @Published var size: Float
 
     init(
@@ -20,7 +20,7 @@ final class AppSettings: ObservableObject {
         self.runFrequency = runFrequency
         self.fps = fps
         self.mode = mode
-        self.birthrate = birthrate
+        self.birthRate = birthrate
         self.size = size
     }
 }
@@ -61,7 +61,7 @@ extension AppSettings: Codable {
             runFrequency:   runFrequency ?? Self.defaults.runFrequency,
             fps:            fps ??          Self.defaults.fps,
             mode:           mode ??         Self.defaults.mode,
-            birthrate:      birthrate ??    Self.defaults.birthrate,
+            birthrate:      birthrate ??    Self.defaults.birthRate,
             size:           size ??         Self.defaults.size
         )
     }
@@ -73,7 +73,7 @@ extension AppSettings: Codable {
         try container.encode(runFrequency, forKey: .runFrequency)
         try container.encode(fps, forKey: .fps)
         try container.encode(mode, forKey: .mode)
-        try container.encode(birthrate, forKey: .birthrate)
+        try container.encode(birthRate, forKey: .birthrate)
         try container.encode(size, forKey: .size)
     }
 }
