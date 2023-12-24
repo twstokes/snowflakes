@@ -6,7 +6,6 @@ struct SettingsView: View {
     @ObservedObject var appSettings: AppSettings
     @State var showingAdvanced = false
 
-
     var body: some View {
         VStack {
             Picker("", selection: $appSettings.mode) {
