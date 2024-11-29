@@ -65,10 +65,15 @@ struct SettingsView: View {
             }
 
             if showingAdvanced {
-                Slider(value: $appSettingsManager.appSettings.fps, in: 15...60, step: 5) {
-                    Text("\(Int(appSettings.fps)) FPS")
-                        .bold()
-                        .onChange(of: appSettings.fps) { renderer?.changeFps($1) }
+                VStack (alignment: .leading) {
+                    Slider(value: $appSettingsManager.appSettings.fps, in: 15...60, step: 5) {
+                        Text("\(Int(appSettings.fps)) FPS")
+                            .bold()
+                            .onChange(of: appSettings.fps) { renderer?.changeFps($1) }
+                    }
+                    Toggle("Always on Top", isOn: $appSettingsManager.appSettings.alwaysOnTop)
+                        .toggleStyle(.checkbox)
+                        .onChange(of: appSettings.alwaysOnTop) { renderer?.toggle(appSettings: appSettings) }
                 }
             }
         }

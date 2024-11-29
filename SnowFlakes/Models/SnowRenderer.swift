@@ -31,7 +31,7 @@ final class SnowRenderer {
         }
 
         for screen in NSScreen.screens {
-            let window = OverlayWindow(screen: screen)
+            let window = OverlayWindow(screen: screen, stayOnTop: appSettings.alwaysOnTop)
 
             let view = SKView(frame: screen.frame)
             view.preferredFramesPerSecond = Int(appSettings.fps)
