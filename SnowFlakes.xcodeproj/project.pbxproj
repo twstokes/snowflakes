@@ -19,7 +19,6 @@
 		C39C6640276686E5000AB9A6 /* BaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39C663F276686E5000AB9A6 /* BaseScene.swift */; };
 		C39C66432766C8F6000AB9A6 /* PowerToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39C66422766C8F6000AB9A6 /* PowerToggleStyle.swift */; };
 		C3C22A0C2953750900A91B61 /* BaseEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C22A0B2953750900A91B61 /* BaseEmitter.swift */; };
-		C3C22A102953876000A91B61 /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C22A0F2953876000A91B61 /* SettingsStore.swift */; };
 		C3C22A12295396B300A91B61 /* SettingsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C22A11295396B300A91B61 /* SettingsStoreTests.swift */; };
 		C3EB326A29563BDF00CB42B9 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EB326929563BDF00CB42B9 /* AppSettings.swift */; };
 		C3EB326C29563E7700CB42B9 /* SnowRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EB326B29563E7700CB42B9 /* SnowRenderer.swift */; };
@@ -65,7 +64,6 @@
 		C39C663F276686E5000AB9A6 /* BaseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScene.swift; sourceTree = "<group>"; };
 		C39C66422766C8F6000AB9A6 /* PowerToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerToggleStyle.swift; sourceTree = "<group>"; };
 		C3C22A0B2953750900A91B61 /* BaseEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseEmitter.swift; sourceTree = "<group>"; };
-		C3C22A0F2953876000A91B61 /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
 		C3C22A11295396B300A91B61 /* SettingsStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStoreTests.swift; sourceTree = "<group>"; };
 		C3EB326929563BDF00CB42B9 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		C3EB326B29563E7700CB42B9 /* SnowRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowRenderer.swift; sourceTree = "<group>"; };
@@ -151,7 +149,6 @@
 				C32F79122957BA4C0087898C /* EmitterMode.swift */,
 				C32F79142957BA560087898C /* RunFrequency.swift */,
 				C3F7FAE527693A410006FE24 /* Screen.swift */,
-				C3C22A0F2953876000A91B61 /* SettingsStore.swift */,
 				C3EB326B29563E7700CB42B9 /* SnowRenderer.swift */,
 				C3ECFA6929326A6C0072BF82 /* StatusItem.swift */,
 			);
@@ -356,7 +353,6 @@
 				C31ABADA276637E500D4FCD1 /* NSApp+OverlayWindows.swift in Sources */,
 				C30627DB27658474002C965B /* FlakeEmitter.swift in Sources */,
 				C39C663E27668631000AB9A6 /* FlakeScene.swift in Sources */,
-				C3C22A102953876000A91B61 /* SettingsStore.swift in Sources */,
 				C31ABAD82766372F00D4FCD1 /* OverlayWindow+SKScene.swift in Sources */,
 				C32F79132957BA4C0087898C /* EmitterMode.swift in Sources */,
 				C3EB326E29576FEE00CB42B9 /* SettingsView+NSHostingController.swift in Sources */,
