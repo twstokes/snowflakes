@@ -2,11 +2,10 @@ import Foundation
 import AppKit
 import SpriteKit
 import Combine
+import SwiftData
 
+@MainActor
 final class SnowRenderer {
-    private var cancellables = Set<AnyCancellable>()
-    private weak var appSettings: AppSettings?
-
     private var overlayWindows: [OverlayWindow] {
         NSApp.overlayWindows
     }
@@ -25,43 +24,9 @@ final class SnowRenderer {
         activeScenes.flatMap { $0.emitters }
     }
 
-    func observe(_ appSettings: AppSettings) {
-        cancellables.removeAll()
-
-        self.appSettings = appSettings
-
-        appSettings.$size
-            .receive(on: RunLoop.main)
-            .sink(receiveValue: changeSize)
-            .store(in: &cancellables)
-
-        appSettings.$birthRate
-            .receive(on: RunLoop.main)
-            .sink(receiveValue: changeBirthrate)
-            .store(in: &cancellables)
-
-        appSettings.$enabled
-            .receive(on: RunLoop.main)
-            .sink { [weak self] enabled in
-                enabled ? self?.start() : self?.stop()
-            }
-            .store(in: &cancellables)
-
-        appSettings.$mode
-            .receive(on: RunLoop.main)
-            .sink { [weak self] mode in
-                self?.changeToMode(mode, size: appSettings.size, birthrate: appSettings.birthRate) // NOTE: cleanup, isolate mode?
-            }
-            .store(in: &cancellables)
-
-        appSettings.$fps
-            .receive(on: RunLoop.main)
-            .sink(receiveValue: changeFps)
-            .store(in: &cancellables)
-    }
-
-    private func start() {
-        guard let appSettings else { return }
+    // TODO - extract render settings from AppSettings to that the entire app settings aren't passed around (leakage)
+    func start(appSettings: AppSettings) {
+        guard appSettings.enabled else { return }
         /// State shouldn't get out of sync, but just in case.
         destroyWindows()
 
@@ -84,7 +49,7 @@ final class SnowRenderer {
         }
     }
 
-    private func stop() {
+    func stop() {
         destroyWindows()
     }
 
@@ -92,7 +57,7 @@ final class SnowRenderer {
         overlayWindows.forEach { $0.close() }
     }
 
-    private func changeToMode(_ mode: EmitterMode, size: Float, birthrate: Float) {
+    func changeToMode(_ mode: EmitterMode, size: Float, birthrate: Float) {
         activeSKViews.forEach {
             let scene = mode.scene(size: $0.frame.size)
             scene.emitters.forEach {
@@ -103,15 +68,15 @@ final class SnowRenderer {
         }
     }
 
-    private func changeSize(_ size: Float) {
+    func changeSize(_ size: Float) {
         activeEmitters.forEach { $0.particleScale = CGFloat(size / 10) }
     }
 
-    private func changeBirthrate(_ birthrate: Float) {
+    func changeBirthrate(_ birthrate: Float) {
         activeEmitters.forEach { $0.particleBirthRate = CGFloat(birthrate) }
     }
 
-    private func changeFps(_ fps: Float) {
+    func changeFps(_ fps: Float) {
         activeSKViews.forEach { $0.preferredFramesPerSecond = Int(fps) }
     }
 

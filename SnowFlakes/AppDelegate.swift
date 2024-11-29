@@ -3,13 +3,13 @@ import Cocoa
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
     private lazy var statusItem = StatusItem()
-    private lazy var renderer = SnowRenderer()
+    private var renderer: SnowRenderer?
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        let appSettings = AppSettings.defaults
-        let settingsView = SettingsView(appSettings: appSettings).toVC()
+        renderer = SnowRenderer()
+        let settingsView = SettingsView(renderer: renderer).toVC()
         statusItem.setup(contentVC: settingsView)
-        renderer.observe(appSettings)
+        renderer?.start(appSettings: AppSettingsManager.shared.appSettings)
     }
 
     func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {

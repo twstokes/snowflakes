@@ -1,12 +1,15 @@
-import Foundation
+import SwiftData
 
-final class AppSettings: ObservableObject {
-    @Published var enabled: Bool
-    @Published var runFrequency: RunFrequency
-    @Published var fps: Float
-    @Published var mode: EmitterMode
-    @Published var birthRate: Float
-    @Published var size: Float
+@Model
+final class AppSettings {
+    @Attribute(.unique) var id = "snowflake-settings"
+
+    var enabled: Bool
+    var runFrequency: RunFrequency
+    var fps: Float
+    var mode: EmitterMode
+    var birthRate: Float
+    var size: Float
 
     init(
         enabled: Bool,
