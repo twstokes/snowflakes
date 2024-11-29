@@ -2,8 +2,6 @@ import SwiftData
 
 @Model
 final class AppSettings {
-    @Attribute(.unique) var id = "snowflake-settings"
-
     var enabled: Bool
     var runFrequency: RunFrequency
     var fps: Float

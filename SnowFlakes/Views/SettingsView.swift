@@ -26,9 +26,7 @@ struct SettingsView: View {
                     .scaleEffect(0.5)
                     .frame(width: 25, height: 20)
                 Slider(value: $appSettingsManager.appSettings.size, in: 1...5, step: 1)
-                    .onChange(of: appSettings.size) {
-                        renderer?.changeSize(appSettings.size)
-                    }
+                    .onChange(of: appSettings.size) { renderer?.changeSize($1) }
                 sizeImageForMode
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -42,9 +40,7 @@ struct SettingsView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 25, height: 20)
                 Slider(value: $appSettingsManager.appSettings.birthRate, in: 1...5, step: 1)
-                    .onChange(of: appSettings.birthRate) {
-                        renderer?.changeBirthRate(appSettings.birthRate)
-                    }
+                    .onChange(of: appSettings.birthRate) { renderer?.changeBirthRate($1) }
                 Image("dense")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -62,9 +58,7 @@ struct SettingsView: View {
                 Spacer()
                 Toggle(appSettings.enabled ? "On" : "Off", isOn: $appSettingsManager.appSettings.enabled)
                     .toggleStyle(PowerToggleStyle())
-                    .onChange(of: appSettings.enabled) {
-                        renderer?.toggle(appSettings: appSettings)
-                    }
+                    .onChange(of: appSettings.enabled) { renderer?.toggle(appSettings: appSettings) }
                 Button("Quit") {
                     NSApplication.shared.terminate(nil)
                 }
@@ -74,9 +68,7 @@ struct SettingsView: View {
                 Slider(value: $appSettingsManager.appSettings.fps, in: 15...60, step: 5) {
                     Text("\(Int(appSettings.fps)) FPS")
                         .bold()
-                        .onChange(of: appSettings.fps) {
-                            renderer?.changeFps(appSettings.fps)
-                        }
+                        .onChange(of: appSettings.fps) { renderer?.changeFps($1) }
                 }
             }
         }
