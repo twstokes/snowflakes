@@ -1,10 +1,7 @@
 import Foundation
 import AppKit
 import SpriteKit
-import Combine
-import SwiftData
 
-@MainActor
 final class SnowRenderer {
     private var overlayWindows: [OverlayWindow] {
         NSApp.overlayWindows
@@ -25,10 +22,13 @@ final class SnowRenderer {
     }
 
     // TODO - extract render settings from AppSettings to that the entire app settings aren't passed around (leakage)
-    func start(appSettings: AppSettings) {
-        guard appSettings.enabled else { return }
+    func toggle(appSettings: AppSettings) {
         /// State shouldn't get out of sync, but just in case.
         destroyWindows()
+
+        guard appSettings.enabled else {
+            return
+        }
 
         for screen in NSScreen.screens {
             let window = OverlayWindow(screen: screen)
@@ -47,10 +47,6 @@ final class SnowRenderer {
             window.contentView = view
             window.orderFrontRegardless()
         }
-    }
-
-    func stop() {
-        destroyWindows()
     }
 
     private func destroyWindows(){

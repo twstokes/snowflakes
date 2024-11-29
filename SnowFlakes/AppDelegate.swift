@@ -6,10 +6,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var renderer: SnowRenderer?
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        renderer = SnowRenderer()
+        let renderer = SnowRenderer()
+        renderer.toggle(appSettings: AppSettingsManager.shared.appSettings)
         let settingsView = SettingsView(renderer: renderer).toVC()
         statusItem.setup(contentVC: settingsView)
-        renderer?.start(appSettings: AppSettingsManager.shared.appSettings)
+
+        self.renderer = renderer
     }
 
     func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {

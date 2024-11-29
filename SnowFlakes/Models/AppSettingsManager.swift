@@ -8,8 +8,6 @@ class AppSettingsManager: ObservableObject {
     @Published var appSettings: AppSettings
     private let container: ModelContainer
 
-    weak var renderer: SnowRenderer?
-
     private init() {
         do {
             container = try ModelContainer(for: AppSettings.self)

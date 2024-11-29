@@ -63,7 +63,7 @@ struct SettingsView: View {
                 Toggle(appSettingsManager.appSettings.enabled ? "On" : "Off", isOn: $appSettingsManager.appSettings.enabled)
                     .toggleStyle(PowerToggleStyle())
                     .onChange(of: appSettingsManager.appSettings.enabled) {
-                        appSettingsManager.appSettings.enabled ? renderer?.start(appSettings: appSettingsManager.appSettings) : renderer?.stop()
+                        renderer?.toggle(appSettings: appSettingsManager.appSettings)
                     }
                 Button("Quit") {
                     NSApplication.shared.terminate(nil)
