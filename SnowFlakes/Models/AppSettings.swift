@@ -16,14 +16,14 @@ final class AppSettings {
         runFrequency: RunFrequency,
         fps: Float,
         mode: EmitterMode,
-        birthrate: Float,
+        birthRate: Float,
         size: Float
     ) {
         self.enabled = enabled
         self.runFrequency = runFrequency
         self.fps = fps
         self.mode = mode
-        self.birthRate = birthrate
+        self.birthRate = birthRate
         self.size = size
     }
 }
@@ -34,7 +34,7 @@ extension AppSettings {
         runFrequency:   .always,
         fps:            30,
         mode:           .snow,
-        birthrate:      3.0,
+        birthRate:      3.0,
         size:           3.0
     )
 }

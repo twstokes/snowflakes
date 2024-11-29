@@ -1,12 +1,12 @@
-import SwiftData
 import SwiftUI
 import SpriteKit
-
 
 struct SettingsView: View {
     @EnvironmentObject var appSettingsManager: AppSettingsManager
     @State var showingAdvanced = false
     weak var renderer: SnowRenderer?
+
+    var appSettings: AppSettings { appSettingsManager.appSettings }
 
     var body: some View {
         VStack {
@@ -15,8 +15,8 @@ struct SettingsView: View {
                 Text("Flakes").tag(EmitterMode.flakes)
             }
             .pickerStyle(.segmented)
-            .onChange(of: appSettingsManager.appSettings.mode) {
-                renderer?.changeToMode(appSettingsManager.appSettings.mode, size: appSettingsManager.appSettings.size, birthrate: appSettingsManager.appSettings.birthRate)
+            .onChange(of: appSettings.mode) {
+                renderer?.changeToMode(appSettings.mode, size: appSettings.size, birthrate: appSettings.birthRate)
             }
 
             HStack {
@@ -26,8 +26,8 @@ struct SettingsView: View {
                     .scaleEffect(0.5)
                     .frame(width: 25, height: 20)
                 Slider(value: $appSettingsManager.appSettings.size, in: 1...5, step: 1)
-                    .onChange(of: appSettingsManager.appSettings.size) {
-                        renderer?.changeSize(appSettingsManager.appSettings.size)
+                    .onChange(of: appSettings.size) {
+                        renderer?.changeSize(appSettings.size)
                     }
                 sizeImageForMode
                     .resizable()
@@ -42,8 +42,8 @@ struct SettingsView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 25, height: 20)
                 Slider(value: $appSettingsManager.appSettings.birthRate, in: 1...5, step: 1)
-                    .onChange(of: appSettingsManager.appSettings.birthRate) {
-                        renderer?.changeBirthrate(appSettingsManager.appSettings.birthRate)
+                    .onChange(of: appSettings.birthRate) {
+                        renderer?.changeBirthRate(appSettings.birthRate)
                     }
                 Image("dense")
                     .resizable()
@@ -60,10 +60,10 @@ struct SettingsView: View {
                         .frame(width: 15, height: 15)
                 })
                 Spacer()
-                Toggle(appSettingsManager.appSettings.enabled ? "On" : "Off", isOn: $appSettingsManager.appSettings.enabled)
+                Toggle(appSettings.enabled ? "On" : "Off", isOn: $appSettingsManager.appSettings.enabled)
                     .toggleStyle(PowerToggleStyle())
-                    .onChange(of: appSettingsManager.appSettings.enabled) {
-                        renderer?.toggle(appSettings: appSettingsManager.appSettings)
+                    .onChange(of: appSettings.enabled) {
+                        renderer?.toggle(appSettings: appSettings)
                     }
                 Button("Quit") {
                     NSApplication.shared.terminate(nil)
@@ -72,10 +72,10 @@ struct SettingsView: View {
 
             if showingAdvanced {
                 Slider(value: $appSettingsManager.appSettings.fps, in: 15...60, step: 5) {
-                    Text("\(Int(appSettingsManager.appSettings.fps)) FPS")
+                    Text("\(Int(appSettings.fps)) FPS")
                         .bold()
-                        .onChange(of: appSettingsManager.appSettings.fps) {
-                            renderer?.changeFps(appSettingsManager.appSettings.fps)
+                        .onChange(of: appSettings.fps) {
+                            renderer?.changeFps(appSettings.fps)
                         }
                 }
             }
@@ -84,7 +84,7 @@ struct SettingsView: View {
     }
 
     private var sizeImageForMode: Image {
-        switch appSettingsManager.appSettings.mode {
+        switch appSettings.mode {
         case .snow:
             return Image("snow")
         case .flakes:

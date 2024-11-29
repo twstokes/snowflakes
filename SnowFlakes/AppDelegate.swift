@@ -2,8 +2,8 @@ import Cocoa
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
-    private lazy var statusItem = StatusItem()
     private var renderer: SnowRenderer?
+    private lazy var statusItem = StatusItem()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         let renderer = SnowRenderer()

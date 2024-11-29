@@ -68,8 +68,8 @@ final class SnowRenderer {
         activeEmitters.forEach { $0.particleScale = CGFloat(size / 10) }
     }
 
-    func changeBirthrate(_ birthrate: Float) {
-        activeEmitters.forEach { $0.particleBirthRate = CGFloat(birthrate) }
+    func changeBirthRate(_ birthRate: Float) {
+        activeEmitters.forEach { $0.particleBirthRate = CGFloat(birthRate) }
     }
 
     func changeFps(_ fps: Float) {
