@@ -61,7 +61,7 @@ struct SettingsView: View {
                 }
             }
             Divider()
-                .padding(.vertical, 10)
+                .padding(.vertical, 5)
 
             HStack {
                 Toggle(appSettings.enabled ? "On" : "Off", isOn: $appSettingsManager.appSettings.enabled)
@@ -95,7 +95,7 @@ struct SettingsView: View {
             }
         }
         .padding()
-        .frame(width: 300)
+        .frame(width: 275)
     }
 
     private var sizeImageForMode: Image {
