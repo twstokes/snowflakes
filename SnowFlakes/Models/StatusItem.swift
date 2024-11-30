@@ -21,10 +21,8 @@ final class StatusItem: ObservableObject {
     }
 
     private func createPopover(contentVC: NSViewController) -> NSPopover {
-        let popoverSize = contentVC.preferredContentSize
-
         let popover = NSPopover()
-        popover.contentSize = popoverSize
+        popover.contentSize = contentVC.preferredContentSize
         popover.behavior = .transient
         popover.contentViewController = contentVC
         return popover

@@ -10,43 +10,58 @@ struct SettingsView: View {
 
     var body: some View {
         VStack {
-            Picker("", selection: $appSettingsManager.appSettings.mode) {
-                Text("Puffs").tag(EmitterMode.snow)
-                Text("Flakes").tag(EmitterMode.flakes)
-            }
-            .pickerStyle(.segmented)
-            .onChange(of: appSettings.mode) {
-                renderer?.changeToMode(appSettings.mode, size: appSettings.size, birthrate: appSettings.birthRate)
-            }
-
             HStack {
-                sizeImageForMode
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .scaleEffect(0.5)
-                    .frame(width: 25, height: 20)
-                Slider(value: $appSettingsManager.appSettings.size, in: 1...5, step: 1)
-                    .onChange(of: appSettings.size) { renderer?.changeSize($1) }
-                sizeImageForMode
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 25, height: 20)
-            }
+                Picker("", selection: $appSettingsManager.appSettings.mode) {
+                    Image("snow")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 28, height: 28)
+                        .tag(EmitterMode.snow)
+                    Image("flake")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 28, height: 20)
+                        .tag(EmitterMode.flakes)
+                }
+                .pickerStyle(.radioGroup)
+                .onChange(of: appSettings.mode) {
+                    renderer?.changeToMode(appSettings.mode, size: appSettings.size, birthrate: appSettings.birthRate)
+                }
+                Divider()
+                    .frame(height: 70)
+                VStack {
 
-            Divider()
-            HStack {
-                Image("sparse")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 25, height: 20)
-                Slider(value: $appSettingsManager.appSettings.birthRate, in: 1...5, step: 1)
-                    .onChange(of: appSettings.birthRate) { renderer?.changeBirthRate($1) }
-                Image("dense")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 25, height: 20)
+                    HStack {
+                        sizeImageForMode
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .scaleEffect(0.5)
+                            .frame(width: 25, height: 20)
+                        Slider(value: $appSettingsManager.appSettings.size, in: 1...5, step: 1)
+                            .onChange(of: appSettings.size) { renderer?.changeSize($1) }
+                        sizeImageForMode
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 25, height: 20)
+                    }
+
+                    Divider()
+                    HStack {
+                        Image("sparse")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 25, height: 20)
+                        Slider(value: $appSettingsManager.appSettings.birthRate, in: 1...5, step: 1)
+                            .onChange(of: appSettings.birthRate) { renderer?.changeBirthRate($1) }
+                        Image("dense")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 25, height: 20)
+                    }
+                }
             }
             Divider()
+                .padding(.vertical, 10)
 
             HStack {
                 Button(action: { showingAdvanced.toggle()
@@ -78,6 +93,7 @@ struct SettingsView: View {
             }
         }
         .padding()
+        .frame(width: 300)
     }
 
     private var sizeImageForMode: Image {
@@ -93,12 +109,10 @@ struct SettingsView: View {
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
-            .frame(width: 300)
             .previewDisplayName("Advanced Collapsed")
             .environmentObject(AppSettingsManager.shared)
 
         SettingsView(showingAdvanced: true)
-            .frame(width: 300)
             .previewDisplayName("Advanced Open")
             .environmentObject(AppSettingsManager.shared)
     }
