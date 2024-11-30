@@ -18,7 +18,6 @@
 		C39C663C27668625000AB9A6 /* SnowScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39C663B27668625000AB9A6 /* SnowScene.swift */; };
 		C39C663E27668631000AB9A6 /* FlakeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39C663D27668631000AB9A6 /* FlakeScene.swift */; };
 		C39C6640276686E5000AB9A6 /* BaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39C663F276686E5000AB9A6 /* BaseScene.swift */; };
-		C39C66432766C8F6000AB9A6 /* PowerToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39C66422766C8F6000AB9A6 /* PowerToggleStyle.swift */; };
 		C3C22A0C2953750900A91B61 /* BaseEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C22A0B2953750900A91B61 /* BaseEmitter.swift */; };
 		C3C22A12295396B300A91B61 /* SettingsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C22A11295396B300A91B61 /* SettingsStoreTests.swift */; };
 		C3EB326A29563BDF00CB42B9 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EB326929563BDF00CB42B9 /* AppSettings.swift */; };
@@ -64,7 +63,6 @@
 		C39C663B27668625000AB9A6 /* SnowScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowScene.swift; sourceTree = "<group>"; };
 		C39C663D27668631000AB9A6 /* FlakeScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlakeScene.swift; sourceTree = "<group>"; };
 		C39C663F276686E5000AB9A6 /* BaseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScene.swift; sourceTree = "<group>"; };
-		C39C66422766C8F6000AB9A6 /* PowerToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerToggleStyle.swift; sourceTree = "<group>"; };
 		C3C22A0B2953750900A91B61 /* BaseEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseEmitter.swift; sourceTree = "<group>"; };
 		C3C22A11295396B300A91B61 /* SettingsStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStoreTests.swift; sourceTree = "<group>"; };
 		C3EB326929563BDF00CB42B9 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
@@ -138,7 +136,6 @@
 			isa = PBXGroup;
 			children = (
 				C3FDBBAA275B2CE700D2DE4D /* OverlayWindow.swift */,
-				C39C66422766C8F6000AB9A6 /* PowerToggleStyle.swift */,
 				C3402D8B2762A6BD00417377 /* SettingsView.swift */,
 			);
 			path = Views;
@@ -276,7 +273,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1310;
-				LastUpgradeCheck = 1410;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					C3FDBB78275B2C1300D2DE4D = {
 						CreatedOnToolsVersion = 13.1;
@@ -361,7 +358,6 @@
 				C32F79132957BA4C0087898C /* EmitterMode.swift in Sources */,
 				C3EB326E29576FEE00CB42B9 /* SettingsView+NSHostingController.swift in Sources */,
 				C39C663C27668625000AB9A6 /* SnowScene.swift in Sources */,
-				C39C66432766C8F6000AB9A6 /* PowerToggleStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,6 +444,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -509,6 +506,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -532,6 +530,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SnowFlakes/SnowFlakes.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -564,6 +563,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SnowFlakes/SnowFlakes.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -592,7 +592,6 @@
 		C3FDBBA2275B2C1500D2DE4D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
@@ -621,7 +620,6 @@
 		C3FDBBA3275B2C1500D2DE4D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
@@ -650,7 +648,6 @@
 		C3FDBBA5275B2C1500D2DE4D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -674,7 +671,6 @@
 		C3FDBBA6275B2C1500D2DE4D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
