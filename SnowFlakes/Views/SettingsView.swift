@@ -95,9 +95,11 @@ struct SettingsView_Previews: PreviewProvider {
         SettingsView()
             .frame(width: 300)
             .previewDisplayName("Advanced Collapsed")
+            .environmentObject(AppSettingsManager.shared)
 
         SettingsView(showingAdvanced: true)
             .frame(width: 300)
             .previewDisplayName("Advanced Open")
+            .environmentObject(AppSettingsManager.shared)
     }
 }
