@@ -1,9 +1,9 @@
-import Foundation
 import AppKit
+import Foundation
 import SwiftUI
 
 extension SettingsView {
     func toVC() -> NSViewController {
-        return NSHostingController(rootView: self.environmentObject(AppSettingsManager.shared))
+        return NSHostingController(rootView: environmentObject(AppSettingsManager.shared))
     }
 }

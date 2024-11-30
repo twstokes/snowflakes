@@ -1,5 +1,5 @@
-import SwiftData
 import Combine
+import SwiftData
 
 @MainActor
 class AppSettingsManager: ObservableObject {

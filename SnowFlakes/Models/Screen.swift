@@ -1,5 +1,5 @@
-import Foundation
 import AppKit
+import Foundation
 
 /// The purpose of this model is to support enabling and disabling screens.
 struct Screen: Hashable, Identifiable {

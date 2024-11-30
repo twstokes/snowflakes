@@ -1,5 +1,5 @@
-import Foundation
 import AppKit
+import Foundation
 import SpriteKit
 
 final class SnowRenderer {
@@ -21,7 +21,7 @@ final class SnowRenderer {
         activeScenes.flatMap { $0.emitters }
     }
 
-    // TODO - extract render settings from AppSettings to that the entire app settings aren't passed around (leakage)
+    // TODO: - extract render settings from AppSettings to that the entire app settings aren't passed around (leakage)
     func toggle(appSettings: AppSettings) {
         /// State shouldn't get out of sync, but just in case.
         destroyWindows()
@@ -38,9 +38,9 @@ final class SnowRenderer {
             view.allowsTransparency = true
 
             let scene = appSettings.mode.scene(size: screen.frame.size)
-            scene.emitters.forEach {
-                $0.particleScale = CGFloat(appSettings.size / 10)
-                $0.particleBirthRate = CGFloat(appSettings.birthRate)
+            for emitter in scene.emitters {
+                emitter.particleScale = CGFloat(appSettings.size / 10)
+                emitter.particleBirthRate = CGFloat(appSettings.birthRate)
             }
 
             view.presentScene(scene)
@@ -49,18 +49,18 @@ final class SnowRenderer {
         }
     }
 
-    private func destroyWindows(){
+    private func destroyWindows() {
         overlayWindows.forEach { $0.close() }
     }
 
     func changeToMode(_ mode: EmitterMode, size: Float, birthrate: Float) {
-        activeSKViews.forEach {
-            let scene = mode.scene(size: $0.frame.size)
-            scene.emitters.forEach {
-                $0.particleScale = CGFloat(size / 10)
-                $0.particleBirthRate = CGFloat(birthrate)
+        for activeSKView in activeSKViews {
+            let scene = mode.scene(size: activeSKView.frame.size)
+            for emitter in scene.emitters {
+                emitter.particleScale = CGFloat(size / 10)
+                emitter.particleBirthRate = CGFloat(birthrate)
             }
-            $0.presentScene(scene)
+            activeSKView.presentScene(scene)
         }
     }
 
@@ -81,7 +81,7 @@ final class SnowRenderer {
 //    }
 }
 
-fileprivate extension EmitterMode {
+private extension EmitterMode {
     func scene(size: CGSize) -> BaseScene {
         switch self {
         case .snow:

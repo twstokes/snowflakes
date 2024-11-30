@@ -1,7 +1,6 @@
 import XCTest
 
 class SnowFlakesUITestsLaunchTests: XCTestCase {
-
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
     }

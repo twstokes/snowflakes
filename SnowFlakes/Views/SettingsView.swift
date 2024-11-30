@@ -1,5 +1,5 @@
-import SwiftUI
 import SpriteKit
+import SwiftUI
 
 struct SettingsView: View {
     @EnvironmentObject var appSettingsManager: AppSettingsManager
@@ -30,14 +30,13 @@ struct SettingsView: View {
                 Divider()
                     .frame(height: 70)
                 VStack {
-
                     HStack {
                         sizeImageForMode
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .scaleEffect(0.5)
                             .frame(width: 25, height: 20)
-                        Slider(value: $appSettingsManager.appSettings.size, in: 1...5, step: 1)
+                        Slider(value: $appSettingsManager.appSettings.size, in: 1 ... 5, step: 1)
                             .onChange(of: appSettings.size) { renderer?.changeSize($1) }
                         sizeImageForMode
                             .resizable()
@@ -51,7 +50,7 @@ struct SettingsView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 25, height: 20)
-                        Slider(value: $appSettingsManager.appSettings.birthRate, in: 1...5, step: 1)
+                        Slider(value: $appSettingsManager.appSettings.birthRate, in: 1 ... 5, step: 1)
                             .onChange(of: appSettings.birthRate) { renderer?.changeBirthRate($1) }
                         Image("dense")
                             .resizable()
@@ -82,8 +81,8 @@ struct SettingsView: View {
             }
 
             if showingAdvanced {
-                VStack (alignment: .leading) {
-                    Slider(value: $appSettingsManager.appSettings.fps, in: 15...60, step: 5) {
+                VStack(alignment: .leading) {
+                    Slider(value: $appSettingsManager.appSettings.fps, in: 15 ... 60, step: 5) {
                         Text("\(Int(appSettings.fps)) FPS")
                             .bold()
                             .onChange(of: appSettings.fps) { renderer?.changeFps($1) }

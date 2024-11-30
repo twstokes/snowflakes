@@ -31,12 +31,12 @@ final class AppSettings {
 
 extension AppSettings {
     static let defaults = AppSettings(
-        enabled:        false,
-        runFrequency:   .always,
-        fps:            30,
-        mode:           .snow,
-        birthRate:      3.0,
-        size:           3.0,
-        alwaysOnTop:    false
+        enabled: false,
+        runFrequency: .always,
+        fps: 30,
+        mode: .snow,
+        birthRate: 3.0,
+        size: 3.0,
+        alwaysOnTop: false
     )
 }

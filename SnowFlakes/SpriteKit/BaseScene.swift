@@ -17,7 +17,7 @@ class BaseScene: SKScene {
         /// Note: When this is size.height it creates a neat "flurry" effect
         emitter.particlePositionRange.dy = 0
     }
-    
+
     func addEmitters(emitters: [SKEmitterNode]) {
         for emitter in emitters {
             setEmitterPosition(emitter)
@@ -25,7 +25,8 @@ class BaseScene: SKScene {
         }
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }

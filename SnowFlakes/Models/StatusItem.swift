@@ -15,7 +15,7 @@ final class StatusItem: ObservableObject {
 
         let statusBarItem = NSStatusBar.system.statusItem(withLength: statusItemLength)
         statusBarItem.button?.target = self
-        statusBarItem.button?.action = #selector(self.togglePopover(_:))
+        statusBarItem.button?.action = #selector(togglePopover(_:))
         statusBarItem.button?.image = statusItemImage
         return statusBarItem
     }

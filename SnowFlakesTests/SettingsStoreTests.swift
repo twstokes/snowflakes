@@ -1,8 +1,7 @@
 import Foundation
 
-
-import XCTest
 @testable import SnowFlakes
+import XCTest
 
 class StoreTests: XCTestCase {
     private var userDefaults: UserDefaults!
@@ -12,8 +11,7 @@ class StoreTests: XCTestCase {
         userDefaults.removePersistentDomain(forName: #file)
     }
 
-    override func tearDownWithError() throws {
-    }
+    override func tearDownWithError() throws {}
 
     func testStoringAppState() throws {
         let expected: Float = 12345.0
@@ -21,9 +19,9 @@ class StoreTests: XCTestCase {
         let expectation = expectation(description: "successfully written")
         let store = UserDefaultsStore(userDefaults: userDefaults) { result in
             switch result {
-            case .success(let appState):
+            case let .success(appState):
                 XCTAssertEqual(appState.size, expected)
-            case .failure(let error):
+            case let .failure(error):
                 XCTFail(error.localizedDescription)
             }
 

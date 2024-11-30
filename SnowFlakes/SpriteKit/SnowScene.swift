@@ -7,8 +7,9 @@ final class SnowScene: BaseScene {
         let emitter1 = SnowEmitter()
         addEmitters(emitters: [emitter1])
     }
-    
-    required init?(coder aDecoder: NSCoder) {
+
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
