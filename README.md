@@ -12,4 +12,4 @@ https://user-images.githubusercontent.com/2092798/209457432-2546a72f-65aa-4f3d-a
 
 ## Technical overview
 
-For each display, a non-interactive overlay window is added. Inside that window is a fullscreen [SKView](https://developer.apple.com/documentation/spritekit/skview) that runs a scene that contains emitters. These emitters spit out snow and flakes and can be tweaked by the user interface. Settings are saved automatically across restarts of the app via [UserDefaults](https://developer.apple.com/documentation/foundation/userdefaults).
+For each display, a non-interactive overlay window is added. Inside that window is a fullscreen [SKView](https://developer.apple.com/documentation/spritekit/skview) that runs a scene that contains emitters. These emitters spit out snow and flakes and can be tweaked by the user interface. Settings are saved automatically across restarts of the app via [SwiftData](https://developer.apple.com/xcode/swiftdata/).
