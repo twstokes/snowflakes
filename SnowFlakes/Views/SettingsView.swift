@@ -64,16 +64,18 @@ struct SettingsView: View {
                 .padding(.vertical, 10)
 
             HStack {
+                Toggle(appSettings.enabled ? "On" : "Off", isOn: $appSettingsManager.appSettings.enabled)
+                    .toggleStyle(.switch)
+                    .tint(Color.green)
+                    .labelsHidden()
+                    .onChange(of: appSettings.enabled) { renderer?.toggle(appSettings: appSettings) }
+                Spacer()
                 Button(action: { showingAdvanced.toggle()
                 }, label: {
                     Image(systemName: "gear")
                         .resizable()
                         .frame(width: 15, height: 15)
                 })
-                Spacer()
-                Toggle(appSettings.enabled ? "On" : "Off", isOn: $appSettingsManager.appSettings.enabled)
-                    .toggleStyle(PowerToggleStyle())
-                    .onChange(of: appSettings.enabled) { renderer?.toggle(appSettings: appSettings) }
                 Button("Quit") {
                     NSApplication.shared.terminate(nil)
                 }
