@@ -26,7 +26,7 @@ struct SettingsView: View {
                     alwaysOnTop: $appSettings.alwaysOnTop,
                     fps: $appSettings.fps
                 )
-           }
+            }
         }
         .padding()
         .frame(width: 220)
