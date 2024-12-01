@@ -33,20 +33,20 @@ struct AdvancedSettingsView: View {
                     renderer?.changeToMode(mode, size: size, birthRate: birthRate)
                 }
             }
-            
+
             Group {
                 Text("Visibility")
                     .bold()
-                
+
                 Toggle("Always on Top", isOn: $alwaysOnTop)
                     .toggleStyle(.checkbox)
                     .onChange(of: appSettings.alwaysOnTop) { renderer?.toggle(appSettings: appSettings) }
             }
-            
+
             Group {
                 Text("Performance")
                     .bold()
-                
+
                 Slider(value: $fps, in: 10 ... 60, step: 10) {
                     Text("\(Int(fps)) FPS")
                         .onChange(of: fps) { renderer?.changeFps($1) }
