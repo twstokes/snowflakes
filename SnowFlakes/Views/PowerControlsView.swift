@@ -8,9 +8,7 @@ import SwiftUI
 
 struct PowerControlsView: View {
     @Binding var enabled: Bool
-    let appSettings: AppSettings
     @Binding var showingAdvanced: Bool
-    var renderer: SnowRenderer?
 
     var body: some View {
         HStack {
@@ -18,7 +16,6 @@ struct PowerControlsView: View {
                 .toggleStyle(.switch)
                 .tint(Color.green)
                 .labelsHidden()
-                .onChange(of: enabled) { renderer?.toggle(appSettings: appSettings) }
             Spacer()
             Button(action: { showingAdvanced.toggle()
             }, label: {

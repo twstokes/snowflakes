@@ -11,29 +11,40 @@ struct SettingsView: View {
             SlidersView(
                 size: $appSettingsManager.appSettings.size,
                 birthRate: $appSettingsManager.appSettings.birthRate,
-                mode: appSettingsManager.appSettings.mode,
-                renderer: renderer
+                mode: appSettingsManager.appSettings.mode
             )
+            .onChange(of: appSettingsManager.appSettings.size) { renderer?.changeSize($1) }
+            .onChange(of: appSettingsManager.appSettings.birthRate) { renderer?.changeBirthRate($1) }
 
             Divider()
 
             PowerControlsView(
                 enabled: $appSettingsManager.appSettings.enabled,
-                appSettings: appSettingsManager.appSettings,
-                showingAdvanced: $showingAdvanced,
-                renderer: renderer
+                showingAdvanced: $showingAdvanced
             )
+            .onChange(of: appSettingsManager.appSettings.enabled) {
+                renderer?.toggle(appSettings: appSettingsManager.appSettings)
+            }
 
             if showingAdvanced {
                 AdvancedSettingsView(
                     mode: $appSettingsManager.appSettings.mode,
                     alwaysOnTop: $appSettingsManager.appSettings.alwaysOnTop,
-                    fps: $appSettingsManager.appSettings.fps,
-                    appSettings: appSettingsManager.appSettings,
-                    size: appSettingsManager.appSettings.size,
-                    birthRate: appSettingsManager.appSettings.birthRate,
-                    renderer: renderer
+                    fps: $appSettingsManager.appSettings.fps
                 )
+                .onChange(of: appSettingsManager.appSettings.mode) {
+                    renderer?.changeToMode(
+                        appSettingsManager.appSettings.mode,
+                        size: appSettingsManager.appSettings.size,
+                        birthRate: appSettingsManager.appSettings.birthRate
+                    )
+                }
+                .onChange(of: appSettingsManager.appSettings.alwaysOnTop) {
+                    renderer?.toggle(appSettings: appSettingsManager.appSettings)
+                }
+                .onChange(of: appSettingsManager.appSettings.fps) {
+                    renderer?.changeFps($1)
+                }
             }
         }
         .padding()
