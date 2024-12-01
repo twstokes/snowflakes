@@ -10,34 +10,12 @@ struct SettingsView: View {
 
     var body: some View {
         VStack {
-            VStack {
-                HStack {
-                    sizeImageForMode
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .scaleEffect(0.5)
-                        .frame(width: 25, height: 20)
-                    Slider(value: $appSettingsManager.appSettings.size, in: 1 ... 5, step: 1)
-                        .onChange(of: appSettings.size) { renderer?.changeSize($1) }
-                    sizeImageForMode
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 25, height: 20)
-                }
-                Divider()
-                HStack {
-                    Image("sparse")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 25, height: 20)
-                    Slider(value: $appSettingsManager.appSettings.birthRate, in: 1 ... 5, step: 1)
-                        .onChange(of: appSettings.birthRate) { renderer?.changeBirthRate($1) }
-                    Image("dense")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 25, height: 20)
-                }
-            }
+            SlidersView(
+                size: $appSettingsManager.appSettings.size,
+                birthRate: $appSettingsManager.appSettings.birthRate,
+                mode: appSettingsManager.appSettings.mode,
+                renderer: renderer
+            )
 
             Divider()
 
@@ -103,14 +81,7 @@ struct SettingsView: View {
         .frame(width: 220)
     }
 
-    private var sizeImageForMode: Image {
-        switch appSettings.mode {
-        case .snow:
-            return Image("snow")
-        case .flakes:
-            return Image("flake")
-        }
-    }
+
 }
 
 struct SettingsView_Previews: PreviewProvider {
