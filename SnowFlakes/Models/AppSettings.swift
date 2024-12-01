@@ -1,6 +1,5 @@
-import SwiftData
+import Foundation
 
-@Model
 final class AppSettings {
     var enabled: Bool
     var runFrequency: RunFrequency

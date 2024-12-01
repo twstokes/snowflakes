@@ -2,50 +2,31 @@ import SpriteKit
 import SwiftUI
 
 struct SettingsView: View {
-    @EnvironmentObject var appSettingsManager: AppSettingsManager
+    @State var appSettings = AppSettings.defaults
     @State var showingAdvanced = false
-    weak var renderer: SnowRenderer?
 
     var body: some View {
         VStack {
             SlidersView(
-                size: $appSettingsManager.appSettings.size,
-                birthRate: $appSettingsManager.appSettings.birthRate,
-                mode: appSettingsManager.appSettings.mode
+                size: $appSettings.size,
+                birthRate: $appSettings.birthRate,
+                mode: appSettings.mode
             )
-            .onChange(of: appSettingsManager.appSettings.size) { renderer?.changeSize($1) }
-            .onChange(of: appSettingsManager.appSettings.birthRate) { renderer?.changeBirthRate($1) }
 
             Divider()
 
             PowerControlsView(
-                enabled: $appSettingsManager.appSettings.enabled,
+                enabled: $appSettings.enabled,
                 showingAdvanced: $showingAdvanced
             )
-            .onChange(of: appSettingsManager.appSettings.enabled) {
-                renderer?.toggle(appSettings: appSettingsManager.appSettings)
-            }
 
             if showingAdvanced {
                 AdvancedSettingsView(
-                    mode: $appSettingsManager.appSettings.mode,
-                    alwaysOnTop: $appSettingsManager.appSettings.alwaysOnTop,
-                    fps: $appSettingsManager.appSettings.fps
+                    mode: $appSettings.mode,
+                    alwaysOnTop: $appSettings.alwaysOnTop,
+                    fps: $appSettings.fps
                 )
-                .onChange(of: appSettingsManager.appSettings.mode) {
-                    renderer?.changeToMode(
-                        appSettingsManager.appSettings.mode,
-                        size: appSettingsManager.appSettings.size,
-                        birthRate: appSettingsManager.appSettings.birthRate
-                    )
-                }
-                .onChange(of: appSettingsManager.appSettings.alwaysOnTop) {
-                    renderer?.toggle(appSettings: appSettingsManager.appSettings)
-                }
-                .onChange(of: appSettingsManager.appSettings.fps) {
-                    renderer?.changeFps($1)
-                }
-            }
+           }
         }
         .padding()
         .frame(width: 220)
@@ -54,12 +35,10 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        SettingsView(appSettings: AppSettings.defaults)
             .previewDisplayName("Advanced Collapsed")
-            .environmentObject(AppSettingsManager.shared)
 
-        SettingsView(showingAdvanced: true)
+        SettingsView(appSettings: AppSettings.defaults, showingAdvanced: true)
             .previewDisplayName("Advanced Open")
-            .environmentObject(AppSettingsManager.shared)
     }
 }

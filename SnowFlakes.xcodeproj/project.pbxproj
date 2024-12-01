@@ -17,7 +17,6 @@
 		C32F79132957BA4C0087898C /* EmitterMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32F79122957BA4C0087898C /* EmitterMode.swift */; };
 		C32F79152957BA560087898C /* RunFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32F79142957BA560087898C /* RunFrequency.swift */; };
 		C3402D8C2762A6BD00417377 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3402D8B2762A6BD00417377 /* SettingsView.swift */; };
-		C36890892CFA1F0200AB9324 /* AppSettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36890882CFA1F0200AB9324 /* AppSettingsManager.swift */; };
 		C39C663C27668625000AB9A6 /* SnowScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39C663B27668625000AB9A6 /* SnowScene.swift */; };
 		C39C663E27668631000AB9A6 /* FlakeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39C663D27668631000AB9A6 /* FlakeScene.swift */; };
 		C39C6640276686E5000AB9A6 /* BaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39C663F276686E5000AB9A6 /* BaseScene.swift */; };
@@ -65,7 +64,6 @@
 		C32F79122957BA4C0087898C /* EmitterMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmitterMode.swift; sourceTree = "<group>"; };
 		C32F79142957BA560087898C /* RunFrequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunFrequency.swift; sourceTree = "<group>"; };
 		C3402D8B2762A6BD00417377 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		C36890882CFA1F0200AB9324 /* AppSettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsManager.swift; sourceTree = "<group>"; };
 		C39C663B27668625000AB9A6 /* SnowScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowScene.swift; sourceTree = "<group>"; };
 		C39C663D27668631000AB9A6 /* FlakeScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlakeScene.swift; sourceTree = "<group>"; };
 		C39C663F276686E5000AB9A6 /* BaseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScene.swift; sourceTree = "<group>"; };
@@ -154,7 +152,6 @@
 			isa = PBXGroup;
 			children = (
 				C3EB326929563BDF00CB42B9 /* AppSettings.swift */,
-				C36890882CFA1F0200AB9324 /* AppSettingsManager.swift */,
 				C32F79122957BA4C0087898C /* EmitterMode.swift */,
 				C32F79142957BA560087898C /* RunFrequency.swift */,
 				C3F7FAE527693A410006FE24 /* Screen.swift */,
@@ -348,7 +345,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C36890892CFA1F0200AB9324 /* AppSettingsManager.swift in Sources */,
 				C32847C32CFCE4B600DB3EBC /* AdvancedSettingsView.swift in Sources */,
 				C32847BF2CFCE1BE00DB3EBC /* SlidersView.swift in Sources */,
 				C32F79152957BA560087898C /* RunFrequency.swift in Sources */,
