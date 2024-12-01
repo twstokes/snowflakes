@@ -10,57 +10,36 @@ struct SettingsView: View {
 
     var body: some View {
         VStack {
-            HStack {
-                Picker("", selection: $appSettingsManager.appSettings.mode) {
-                    Image("snow")
+            VStack {
+                HStack {
+                    sizeImageForMode
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 28, height: 28)
-                        .tag(EmitterMode.snow)
-                    Image("flake")
+                        .scaleEffect(0.5)
+                        .frame(width: 25, height: 20)
+                    Slider(value: $appSettingsManager.appSettings.size, in: 1 ... 5, step: 1)
+                        .onChange(of: appSettings.size) { renderer?.changeSize($1) }
+                    sizeImageForMode
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 28, height: 20)
-                        .tag(EmitterMode.flakes)
-                }
-                .pickerStyle(.radioGroup)
-                .onChange(of: appSettings.mode) {
-                    renderer?.changeToMode(appSettings.mode, size: appSettings.size, birthrate: appSettings.birthRate)
+                        .frame(width: 25, height: 20)
                 }
                 Divider()
-                    .frame(height: 70)
-                VStack {
-                    HStack {
-                        sizeImageForMode
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .scaleEffect(0.5)
-                            .frame(width: 25, height: 20)
-                        Slider(value: $appSettingsManager.appSettings.size, in: 1 ... 5, step: 1)
-                            .onChange(of: appSettings.size) { renderer?.changeSize($1) }
-                        sizeImageForMode
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 25, height: 20)
-                    }
-
-                    Divider()
-                    HStack {
-                        Image("sparse")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 25, height: 20)
-                        Slider(value: $appSettingsManager.appSettings.birthRate, in: 1 ... 5, step: 1)
-                            .onChange(of: appSettings.birthRate) { renderer?.changeBirthRate($1) }
-                        Image("dense")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 25, height: 20)
-                    }
+                HStack {
+                    Image("sparse")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 25, height: 20)
+                    Slider(value: $appSettingsManager.appSettings.birthRate, in: 1 ... 5, step: 1)
+                        .onChange(of: appSettings.birthRate) { renderer?.changeBirthRate($1) }
+                    Image("dense")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 25, height: 20)
                 }
             }
+
             Divider()
-                .padding(.vertical, 5)
 
             HStack {
                 Toggle(appSettings.enabled ? "On" : "Off", isOn: $appSettingsManager.appSettings.enabled)
@@ -71,30 +50,57 @@ struct SettingsView: View {
                 Spacer()
                 Button(action: { showingAdvanced.toggle()
                 }, label: {
-                    Image(systemName: "gear")
+                    Image(systemName: showingAdvanced ? "gearshape.fill" : "gearshape")
                         .resizable()
                         .frame(width: 15, height: 15)
                 })
                 Button("Quit") {
                     NSApplication.shared.terminate(nil)
                 }
-            }
+            }.padding([.top], 5)
 
             if showingAdvanced {
-                VStack(alignment: .leading) {
-                    Slider(value: $appSettingsManager.appSettings.fps, in: 15 ... 60, step: 5) {
-                        Text("\(Int(appSettings.fps)) FPS")
+                VStack(alignment: .leading, spacing: 10) {
+                    Divider()
+                    Group {
+                        Text("Mode")
                             .bold()
-                            .onChange(of: appSettings.fps) { renderer?.changeFps($1) }
+                        Picker("", selection: $appSettingsManager.appSettings.mode) {
+                            Text("Puffs")
+                                .tag(EmitterMode.snow)
+                            Text("Flakes")
+                                .tag(EmitterMode.flakes)
+                        }
+                        .horizontalRadioGroupLayout()
+                        .pickerStyle(.radioGroup)
+                        .onChange(of: appSettings.mode) {
+                            renderer?.changeToMode(appSettings.mode, size: appSettings.size, birthrate: appSettings.birthRate)
+                        }
                     }
-                    Toggle("Always on Top", isOn: $appSettingsManager.appSettings.alwaysOnTop)
-                        .toggleStyle(.checkbox)
-                        .onChange(of: appSettings.alwaysOnTop) { renderer?.toggle(appSettings: appSettings) }
-                }
+
+                    Group {
+                        Text("Visibility")
+                            .bold()
+
+                        Toggle("Always on Top", isOn: $appSettingsManager.appSettings.alwaysOnTop)
+                            .toggleStyle(.checkbox)
+                            .onChange(of: appSettings.alwaysOnTop) { renderer?.toggle(appSettings: appSettings) }
+                    }
+
+                    Group {
+                        Text("Performance")
+                            .bold()
+
+                        Slider(value: $appSettingsManager.appSettings.fps, in: 10 ... 60, step: 10) {
+                            Text("\(Int(appSettings.fps)) FPS")
+                                .onChange(of: appSettings.fps) { renderer?.changeFps($1) }
+                        }
+                    }
+                }.padding([.top], 5)
             }
         }
         .padding()
-        .frame(width: 275)
+        .frame(width: 220)
     }
 
     private var sizeImageForMode: Image {
