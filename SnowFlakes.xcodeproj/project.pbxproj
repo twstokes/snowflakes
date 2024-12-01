@@ -12,6 +12,8 @@
 		C31ABAD82766372F00D4FCD1 /* OverlayWindow+SKScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31ABAD72766372F00D4FCD1 /* OverlayWindow+SKScene.swift */; };
 		C31ABADA276637E500D4FCD1 /* NSApp+OverlayWindows.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31ABAD9276637E500D4FCD1 /* NSApp+OverlayWindows.swift */; };
 		C32847BF2CFCE1BE00DB3EBC /* SlidersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32847BE2CFCE1BE00DB3EBC /* SlidersView.swift */; };
+		C32847C12CFCE4A500DB3EBC /* PowerControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32847C02CFCE4A500DB3EBC /* PowerControlsView.swift */; };
+		C32847C32CFCE4B600DB3EBC /* AdvancedSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32847C22CFCE4B600DB3EBC /* AdvancedSettingsView.swift */; };
 		C32F79132957BA4C0087898C /* EmitterMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32F79122957BA4C0087898C /* EmitterMode.swift */; };
 		C32F79152957BA560087898C /* RunFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32F79142957BA560087898C /* RunFrequency.swift */; };
 		C3402D8C2762A6BD00417377 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3402D8B2762A6BD00417377 /* SettingsView.swift */; };
@@ -58,6 +60,8 @@
 		C31ABAD72766372F00D4FCD1 /* OverlayWindow+SKScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OverlayWindow+SKScene.swift"; sourceTree = "<group>"; };
 		C31ABAD9276637E500D4FCD1 /* NSApp+OverlayWindows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSApp+OverlayWindows.swift"; sourceTree = "<group>"; };
 		C32847BE2CFCE1BE00DB3EBC /* SlidersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidersView.swift; sourceTree = "<group>"; };
+		C32847C02CFCE4A500DB3EBC /* PowerControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerControlsView.swift; sourceTree = "<group>"; };
+		C32847C22CFCE4B600DB3EBC /* AdvancedSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSettingsView.swift; sourceTree = "<group>"; };
 		C32F79122957BA4C0087898C /* EmitterMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmitterMode.swift; sourceTree = "<group>"; };
 		C32F79142957BA560087898C /* RunFrequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunFrequency.swift; sourceTree = "<group>"; };
 		C3402D8B2762A6BD00417377 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -139,6 +143,8 @@
 			children = (
 				C3FDBBAA275B2CE700D2DE4D /* OverlayWindow.swift */,
 				C3402D8B2762A6BD00417377 /* SettingsView.swift */,
+				C32847C22CFCE4B600DB3EBC /* AdvancedSettingsView.swift */,
+				C32847C02CFCE4A500DB3EBC /* PowerControlsView.swift */,
 				C32847BE2CFCE1BE00DB3EBC /* SlidersView.swift */,
 			);
 			path = Views;
@@ -343,6 +349,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C36890892CFA1F0200AB9324 /* AppSettingsManager.swift in Sources */,
+				C32847C32CFCE4B600DB3EBC /* AdvancedSettingsView.swift in Sources */,
 				C32847BF2CFCE1BE00DB3EBC /* SlidersView.swift in Sources */,
 				C32F79152957BA560087898C /* RunFrequency.swift in Sources */,
 				C3EB326A29563BDF00CB42B9 /* AppSettings.swift in Sources */,
@@ -355,6 +362,7 @@
 				C3F7FAE627693A410006FE24 /* Screen.swift in Sources */,
 				C3ECFA6A29326A6C0072BF82 /* StatusItem.swift in Sources */,
 				C3EB326C29563E7700CB42B9 /* SnowRenderer.swift in Sources */,
+				C32847C12CFCE4A500DB3EBC /* PowerControlsView.swift in Sources */,
 				C31ABADA276637E500D4FCD1 /* NSApp+OverlayWindows.swift in Sources */,
 				C30627DB27658474002C965B /* FlakeEmitter.swift in Sources */,
 				C39C663E27668631000AB9A6 /* FlakeScene.swift in Sources */,

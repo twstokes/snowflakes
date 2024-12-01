@@ -53,12 +53,12 @@ final class SnowRenderer {
         overlayWindows.forEach { $0.close() }
     }
 
-    func changeToMode(_ mode: EmitterMode, size: Float, birthrate: Float) {
+    func changeToMode(_ mode: EmitterMode, size: Float, birthRate: Float) {
         for activeSKView in activeSKViews {
             let scene = mode.scene(size: activeSKView.frame.size)
             for emitter in scene.emitters {
                 emitter.particleScale = CGFloat(size / 10)
-                emitter.particleBirthRate = CGFloat(birthrate)
+                emitter.particleBirthRate = CGFloat(birthRate)
             }
             activeSKView.presentScene(scene)
         }
