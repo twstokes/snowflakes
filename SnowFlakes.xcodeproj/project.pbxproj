@@ -117,10 +117,10 @@
 			isa = PBXGroup;
 			children = (
 				C3C22A0B2953750900A91B61 /* BaseEmitter.swift */,
-				C30627DA27658474002C965B /* FlakeEmitter.swift */,
-				C30627D82765843F002C965B /* SnowEmitter.swift */,
 				C39C663F276686E5000AB9A6 /* BaseScene.swift */,
+				C30627DA27658474002C965B /* FlakeEmitter.swift */,
 				C39C663D27668631000AB9A6 /* FlakeScene.swift */,
+				C30627D82765843F002C965B /* SnowEmitter.swift */,
 				C39C663B27668625000AB9A6 /* SnowScene.swift */,
 			);
 			path = SpriteKit;
@@ -139,10 +139,10 @@
 		C39C66452766D91A000AB9A6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C3FDBBAA275B2CE700D2DE4D /* OverlayWindow.swift */,
-				C3402D8B2762A6BD00417377 /* SettingsView.swift */,
 				C32847C22CFCE4B600DB3EBC /* AdvancedSettingsView.swift */,
+				C3FDBBAA275B2CE700D2DE4D /* OverlayWindow.swift */,
 				C32847C02CFCE4A500DB3EBC /* PowerControlsView.swift */,
+				C3402D8B2762A6BD00417377 /* SettingsView.swift */,
 				C32847BE2CFCE1BE00DB3EBC /* SlidersView.swift */,
 			);
 			path = Views;
