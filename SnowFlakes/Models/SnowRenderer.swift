@@ -5,6 +5,7 @@ import SpriteKit
 
 final class SnowRenderer {
     private var cancellables = Set<AnyCancellable>()
+    private weak var appSettings: AppSettings?
 
     private var overlayWindows: [OverlayWindow] {
         NSApp.overlayWindows
@@ -39,9 +40,7 @@ final class SnowRenderer {
 
         appSettings.$enabled
             .receive(on: RunLoop.main)
-            .sink { [weak self] _ in
-                self?.toggle(appSettings: appSettings)
-            }
+            .sink { [weak self] _ in self?.reload() }
             .store(in: &cancellables)
 
         appSettings.$mode
@@ -58,17 +57,17 @@ final class SnowRenderer {
 
         appSettings.$alwaysOnTop
             .receive(on: RunLoop.main)
-            .sink { [weak self] _ in
-                self?.toggle(appSettings: appSettings)
-            }
+            .sink { [weak self] _ in self?.reload() }
             .store(in: &cancellables)
+
+        self.appSettings = appSettings
     }
 
-    func toggle(appSettings: AppSettings) {
+    func reload() {
         /// State shouldn't get out of sync, but just in case.
         destroyWindows()
 
-        guard appSettings.enabled else {
+        guard let appSettings, appSettings.enabled else {
             return
         }
 
