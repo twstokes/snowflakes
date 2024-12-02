@@ -55,6 +55,13 @@ final class SnowRenderer {
             .receive(on: RunLoop.main)
             .sink(receiveValue: changeFps)
             .store(in: &cancellables)
+
+        appSettings.$alwaysOnTop
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in
+                self?.toggle(appSettings: appSettings)
+            }
+            .store(in: &cancellables)
     }
 
     func toggle(appSettings: AppSettings) {
