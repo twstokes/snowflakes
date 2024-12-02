@@ -15,11 +15,12 @@
 		C32847C12CFCE4A500DB3EBC /* PowerControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32847C02CFCE4A500DB3EBC /* PowerControlsView.swift */; };
 		C32847C32CFCE4B600DB3EBC /* AdvancedSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32847C22CFCE4B600DB3EBC /* AdvancedSettingsView.swift */; };
 		C32F79132957BA4C0087898C /* EmitterMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32F79122957BA4C0087898C /* EmitterMode.swift */; };
-		C32F79152957BA560087898C /* RunFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32F79142957BA560087898C /* RunFrequency.swift */; };
 		C3402D8C2762A6BD00417377 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3402D8B2762A6BD00417377 /* SettingsView.swift */; };
 		C39C663C27668625000AB9A6 /* SnowScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39C663B27668625000AB9A6 /* SnowScene.swift */; };
 		C39C663E27668631000AB9A6 /* FlakeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39C663D27668631000AB9A6 /* FlakeScene.swift */; };
 		C39C6640276686E5000AB9A6 /* BaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39C663F276686E5000AB9A6 /* BaseScene.swift */; };
+		C3AE64842CFD208000C911EA /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AE64832CFD207D00C911EA /* SettingsStore.swift */; };
+		C3AE64882CFD334500C911EA /* FileManagerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AE64872CFD334500C911EA /* FileManagerStore.swift */; };
 		C3C22A0C2953750900A91B61 /* BaseEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C22A0B2953750900A91B61 /* BaseEmitter.swift */; };
 		C3C22A12295396B300A91B61 /* SettingsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C22A11295396B300A91B61 /* SettingsStoreTests.swift */; };
 		C3EB326A29563BDF00CB42B9 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EB326929563BDF00CB42B9 /* AppSettings.swift */; };
@@ -62,11 +63,12 @@
 		C32847C02CFCE4A500DB3EBC /* PowerControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerControlsView.swift; sourceTree = "<group>"; };
 		C32847C22CFCE4B600DB3EBC /* AdvancedSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSettingsView.swift; sourceTree = "<group>"; };
 		C32F79122957BA4C0087898C /* EmitterMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmitterMode.swift; sourceTree = "<group>"; };
-		C32F79142957BA560087898C /* RunFrequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunFrequency.swift; sourceTree = "<group>"; };
 		C3402D8B2762A6BD00417377 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		C39C663B27668625000AB9A6 /* SnowScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowScene.swift; sourceTree = "<group>"; };
 		C39C663D27668631000AB9A6 /* FlakeScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlakeScene.swift; sourceTree = "<group>"; };
 		C39C663F276686E5000AB9A6 /* BaseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScene.swift; sourceTree = "<group>"; };
+		C3AE64832CFD207D00C911EA /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
+		C3AE64872CFD334500C911EA /* FileManagerStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerStore.swift; sourceTree = "<group>"; };
 		C3C22A0B2953750900A91B61 /* BaseEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseEmitter.swift; sourceTree = "<group>"; };
 		C3C22A11295396B300A91B61 /* SettingsStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStoreTests.swift; sourceTree = "<group>"; };
 		C3EB326929563BDF00CB42B9 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
@@ -153,8 +155,9 @@
 			children = (
 				C3EB326929563BDF00CB42B9 /* AppSettings.swift */,
 				C32F79122957BA4C0087898C /* EmitterMode.swift */,
-				C32F79142957BA560087898C /* RunFrequency.swift */,
 				C3F7FAE527693A410006FE24 /* Screen.swift */,
+				C3AE64832CFD207D00C911EA /* SettingsStore.swift */,
+				C3AE64872CFD334500C911EA /* FileManagerStore.swift */,
 				C3EB326B29563E7700CB42B9 /* SnowRenderer.swift */,
 				C3ECFA6929326A6C0072BF82 /* StatusItem.swift */,
 			);
@@ -347,17 +350,18 @@
 			files = (
 				C32847C32CFCE4B600DB3EBC /* AdvancedSettingsView.swift in Sources */,
 				C32847BF2CFCE1BE00DB3EBC /* SlidersView.swift in Sources */,
-				C32F79152957BA560087898C /* RunFrequency.swift in Sources */,
 				C3EB326A29563BDF00CB42B9 /* AppSettings.swift in Sources */,
 				C39C6640276686E5000AB9A6 /* BaseScene.swift in Sources */,
 				C3402D8C2762A6BD00417377 /* SettingsView.swift in Sources */,
 				C3FDBBAB275B2CE700D2DE4D /* OverlayWindow.swift in Sources */,
 				C3C22A0C2953750900A91B61 /* BaseEmitter.swift in Sources */,
 				C30627D92765843F002C965B /* SnowEmitter.swift in Sources */,
+				C3AE64842CFD208000C911EA /* SettingsStore.swift in Sources */,
 				C3FDBB7D275B2C1300D2DE4D /* AppDelegate.swift in Sources */,
 				C3F7FAE627693A410006FE24 /* Screen.swift in Sources */,
 				C3ECFA6A29326A6C0072BF82 /* StatusItem.swift in Sources */,
 				C3EB326C29563E7700CB42B9 /* SnowRenderer.swift in Sources */,
+				C3AE64882CFD334500C911EA /* FileManagerStore.swift in Sources */,
 				C32847C12CFCE4A500DB3EBC /* PowerControlsView.swift in Sources */,
 				C31ABADA276637E500D4FCD1 /* NSApp+OverlayWindows.swift in Sources */,
 				C30627DB27658474002C965B /* FlakeEmitter.swift in Sources */,

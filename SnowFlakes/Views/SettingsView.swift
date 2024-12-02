@@ -2,7 +2,7 @@ import SpriteKit
 import SwiftUI
 
 struct SettingsView: View {
-    @State var appSettings = AppSettings.defaults
+    @ObservedObject var appSettings: AppSettings
     @State var showingAdvanced = false
 
     var body: some View {

@@ -1,8 +1,11 @@
 import AppKit
+import Combine
 import Foundation
 import SpriteKit
 
 final class SnowRenderer {
+    private var cancellables = Set<AnyCancellable>()
+
     private var overlayWindows: [OverlayWindow] {
         NSApp.overlayWindows
     }
@@ -19,6 +22,39 @@ final class SnowRenderer {
 
     private var activeEmitters: [BaseEmitter] {
         activeScenes.flatMap { $0.emitters }
+    }
+
+    func observe(_ appSettings: AppSettings) {
+        cancellables.removeAll()
+
+        appSettings.$size
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: changeSize)
+            .store(in: &cancellables)
+
+        appSettings.$birthRate
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: changeBirthRate)
+            .store(in: &cancellables)
+
+        appSettings.$enabled
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in
+                self?.toggle(appSettings: appSettings)
+            }
+            .store(in: &cancellables)
+
+        appSettings.$mode
+            .receive(on: RunLoop.main)
+            .sink { [weak self] mode in
+                self?.changeToMode(mode, size: appSettings.size, birthRate: appSettings.birthRate)
+            }
+            .store(in: &cancellables)
+
+        appSettings.$fps
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: changeFps)
+            .store(in: &cancellables)
     }
 
     // TODO: - extract render settings from AppSettings to that the entire app settings aren't passed around (leakage)
@@ -75,10 +111,6 @@ final class SnowRenderer {
     func changeFps(_ fps: Float) {
         activeSKViews.forEach { $0.preferredFramesPerSecond = Int(fps) }
     }
-
-//    private func changeRunFrequency(frequency: RunFrequency) {
-//        print("TODO: update run frequency") /// OR handle somewhere else like the AppState
-//    }
 }
 
 private extension EmitterMode {
