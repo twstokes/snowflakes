@@ -22,7 +22,6 @@
 		C3AE64842CFD208000C911EA /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AE64832CFD207D00C911EA /* SettingsStore.swift */; };
 		C3AE64882CFD334500C911EA /* FileManagerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AE64872CFD334500C911EA /* FileManagerStore.swift */; };
 		C3C22A0C2953750900A91B61 /* BaseEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C22A0B2953750900A91B61 /* BaseEmitter.swift */; };
-		C3C22A12295396B300A91B61 /* SettingsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C22A11295396B300A91B61 /* SettingsStoreTests.swift */; };
 		C3EB326A29563BDF00CB42B9 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EB326929563BDF00CB42B9 /* AppSettings.swift */; };
 		C3EB326C29563E7700CB42B9 /* SnowRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EB326B29563E7700CB42B9 /* SnowRenderer.swift */; };
 		C3EB326E29576FEE00CB42B9 /* SettingsView+NSHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EB326D29576FEE00CB42B9 /* SettingsView+NSHostingController.swift */; };
@@ -70,7 +69,6 @@
 		C3AE64832CFD207D00C911EA /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
 		C3AE64872CFD334500C911EA /* FileManagerStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerStore.swift; sourceTree = "<group>"; };
 		C3C22A0B2953750900A91B61 /* BaseEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseEmitter.swift; sourceTree = "<group>"; };
-		C3C22A11295396B300A91B61 /* SettingsStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStoreTests.swift; sourceTree = "<group>"; };
 		C3EB326929563BDF00CB42B9 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		C3EB326B29563E7700CB42B9 /* SnowRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowRenderer.swift; sourceTree = "<group>"; };
 		C3EB326D29576FEE00CB42B9 /* SettingsView+NSHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsView+NSHostingController.swift"; sourceTree = "<group>"; };
@@ -204,7 +202,6 @@
 			isa = PBXGroup;
 			children = (
 				C3FDBB8E275B2C1500D2DE4D /* SnowFlakesTests.swift */,
-				C3C22A11295396B300A91B61 /* SettingsStoreTests.swift */,
 			);
 			path = SnowFlakesTests;
 			sourceTree = "<group>";
@@ -378,7 +375,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3FDBB8F275B2C1500D2DE4D /* SnowFlakesTests.swift in Sources */,
-				C3C22A12295396B300A91B61 /* SettingsStoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,7 +602,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -618,7 +614,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tannr.SnowFlakesTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -634,7 +630,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -646,7 +642,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tannr.SnowFlakesTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -660,6 +656,7 @@
 		C3FDBBA5275B2C1500D2DE4D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -671,6 +668,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tannr.SnowFlakesUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -683,6 +681,7 @@
 		C3FDBBA6275B2C1500D2DE4D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -694,6 +693,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tannr.SnowFlakesUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
