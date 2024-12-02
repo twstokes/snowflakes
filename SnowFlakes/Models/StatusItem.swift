@@ -1,6 +1,6 @@
 import AppKit
 
-final class StatusItem: ObservableObject {
+final class StatusItem {
     private var popover: NSPopover?
     private var statusBarItem: NSStatusItem?
 
