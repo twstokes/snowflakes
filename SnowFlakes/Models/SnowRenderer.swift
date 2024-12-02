@@ -57,7 +57,6 @@ final class SnowRenderer {
             .store(in: &cancellables)
     }
 
-    // TODO: - extract render settings from AppSettings to that the entire app settings aren't passed around (leakage)
     func toggle(appSettings: AppSettings) {
         /// State shouldn't get out of sync, but just in case.
         destroyWindows()

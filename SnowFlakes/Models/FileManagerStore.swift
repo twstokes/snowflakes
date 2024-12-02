@@ -16,10 +16,8 @@ final class FileManagerStore: SettingsStore {
         do {
             let savedData = try Data(contentsOf: filePath)
             let loadedSettings = try JSONDecoder().decode(AppSettings.self, from: savedData)
-            print("Settings loaded successfully!")
             return loadedSettings
         } catch {
-            print("Settings load error!")
             return AppSettings.defaults
         }
     }
