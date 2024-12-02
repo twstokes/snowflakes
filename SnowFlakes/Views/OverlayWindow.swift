@@ -20,6 +20,7 @@ class OverlayWindow: NSPanel {
             level = .init(Int(shieldingLevel))
             collectionBehavior.insert(.fullScreenAuxiliary)
         } else {
+            level = NSWindow.Level(rawValue: NSWindow.Level.normal.rawValue - 1)
             collectionBehavior.insert(.fullScreenNone)
         }
     }
