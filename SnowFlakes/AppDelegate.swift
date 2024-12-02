@@ -17,4 +17,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationSupportsSecureRestorableState(_: NSApplication) -> Bool {
         return true
     }
+
+    func applicationDidChangeScreenParameters(_ notification: Notification) {
+        renderer.reload()
+    }
 }
