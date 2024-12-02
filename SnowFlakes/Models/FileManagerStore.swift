@@ -27,10 +27,10 @@ final class FileManagerStore: SettingsStore {
         cancellable = appSettings.objectWillChange
             .receive(on: RunLoop.main) /// this is required to get the latest value
             .debounce(for: .seconds(0.1), scheduler: RunLoop.main)
-            .sink { [weak self] in self?.saveAppSettings(appSettings: appSettings) }
+            .sink { [weak self] in self?.saveAppSettings(appSettings) }
     }
 
-    private func saveAppSettings(appSettings: AppSettings) {
+    private func saveAppSettings(_ appSettings: AppSettings) {
         do {
             let encoded = try JSONEncoder().encode(appSettings)
             try encoded.write(to: filePath)
