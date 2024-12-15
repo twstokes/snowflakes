@@ -7,7 +7,7 @@ protocol BaseEmitter: SKEmitterNode {
 
 extension BaseEmitter {
     func applyDefaults() {
-        particleAlphaRange = 0.2
+        particleAlphaRange = 1
 
         particleBirthRate = 3
 
