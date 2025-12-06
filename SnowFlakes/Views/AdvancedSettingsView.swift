@@ -5,10 +5,21 @@ struct AdvancedSettingsView: View {
     @Binding var mode: EmitterMode
     @Binding var alwaysOnTop: Bool
     @Binding var fps: Float
+    @Binding var size: Float
+    @Binding var birthRate: Float
     let settingsFileURL: URL
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
+            Group {
+                Text("Size and Density")
+                    .bold()
+                SlidersView(
+                    size: $size,
+                    birthRate: $birthRate,
+                    mode: mode
+                )
+            }
             Divider()
             Group {
                 Text("Mode")

@@ -8,7 +8,7 @@ struct PowerControlsView: View {
         HStack {
             Toggle(enabled ? "On" : "Off", isOn: $enabled)
                 .toggleStyle(.switch)
-                .tint(Color.green)
+                .tint(Color.blue)
                 .labelsHidden()
             Spacer()
             Button(action: { showingAdvanced.toggle()
@@ -21,5 +21,16 @@ struct PowerControlsView: View {
                 NSApplication.shared.terminate(nil)
             }
         }.padding([.top], 5)
+    }
+}
+
+struct PowerControlsView_Previews: PreviewProvider {
+    static var previews: some View {
+        PowerControlsView(
+            enabled: .constant(true),
+            showingAdvanced: .constant(false)
+        )
+            .padding()
+            .frame(width: 300)
     }
 }

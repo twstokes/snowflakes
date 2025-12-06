@@ -8,24 +8,19 @@ struct SettingsView: View {
 
     var body: some View {
         VStack {
-            SlidersView(
-                size: $appSettings.size,
-                birthRate: $appSettings.birthRate,
-                mode: appSettings.mode
-            )
-
-            Divider()
-
             PowerControlsView(
                 enabled: $appSettings.enabled,
                 showingAdvanced: $showingAdvanced
             )
 
             if showingAdvanced {
+                Divider()
                 AdvancedSettingsView(
                     mode: $appSettings.mode,
                     alwaysOnTop: $appSettings.alwaysOnTop,
                     fps: $appSettings.fps,
+                    size: $appSettings.size,
+                    birthRate: $appSettings.birthRate,
                     settingsFileURL: settingsFileURL
                 )
             }
@@ -41,7 +36,10 @@ struct SettingsView_Previews: PreviewProvider {
         .appendingPathComponent("settings.json")
 
     static var previews: some View {
-        SettingsView(appSettings: AppSettings.defaults, settingsFileURL: previewSettingsURL)
+        SettingsView(
+            appSettings: AppSettings.defaults,
+            settingsFileURL: previewSettingsURL
+        )
             .previewDisplayName("Advanced Collapsed")
 
         SettingsView(
