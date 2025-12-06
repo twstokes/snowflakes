@@ -1,9 +1,11 @@
+import AppKit
 import SwiftUI
 
 struct AdvancedSettingsView: View {
     @Binding var mode: EmitterMode
     @Binding var alwaysOnTop: Bool
     @Binding var fps: Float
+    let settingsFileURL: URL
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -33,6 +35,24 @@ struct AdvancedSettingsView: View {
                     Text("\(Int(fps)) FPS")
                 }
             }
+            Group {
+                Text("Persistence")
+                    .bold()
+                Button("Open Settings File") {
+                    revealSettingsFile()
+                }
+            }
         }.padding([.top], 5)
+    }
+
+    private func revealSettingsFile() {
+        let targetURL: URL
+        if FileManager.default.fileExists(atPath: settingsFileURL.path) {
+            targetURL = settingsFileURL
+        } else {
+            targetURL = settingsFileURL.deletingLastPathComponent()
+        }
+
+        NSWorkspace.shared.activateFileViewerSelecting([targetURL])
     }
 }

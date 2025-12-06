@@ -5,6 +5,10 @@ final class FileManagerStore: SettingsStore {
     private var cancellable: AnyCancellable?
     private let fileURL: URL
 
+    var settingsFileURL: URL {
+        fileURL
+    }
+
     init(
         fileManager: FileManager = .default,
         bundle: Bundle = .main,

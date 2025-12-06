@@ -8,7 +8,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_: Notification) {
         let appSettings = store.loadAppSettings()
-        let settingsView = SettingsView(appSettings: appSettings).toVC()
+        let settingsView = SettingsView(
+            appSettings: appSettings,
+            settingsFileURL: store.settingsFileURL
+        ).toVC()
         statusItem.setup(contentVC: settingsView)
         renderer.observe(appSettings)
         store.observe(appSettings)
