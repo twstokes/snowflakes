@@ -11,15 +11,11 @@ struct AdvancedSettingsView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Group {
-                Text("Size and Density")
-                    .bold()
-                SlidersView(
-                    size: $size,
-                    birthRate: $birthRate,
-                    mode: mode
-                )
-            }
+            SlidersView(
+                size: $size,
+                birthRate: $birthRate,
+                mode: mode
+            )
             Divider()
             Group {
                 Text("Mode")
@@ -49,7 +45,7 @@ struct AdvancedSettingsView: View {
             Group {
                 Text("Persistence")
                     .bold()
-                Button("Open Settings File") {
+                Button("Open Settings File Location") {
                     revealSettingsFile()
                 }
             }
