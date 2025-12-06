@@ -1,8 +1,13 @@
 import AppKit
+import SpriteKit
 
 /// An OverlayWindow covers the entire screen with a transparent view that is non-interactive, non-focusable, and always showing.
 
 class OverlayWindow: NSPanel {
+    var skView: SKView? {
+        contentView as? SKView
+    }
+
     convenience init(screen: NSScreen, stayOnTop: Bool = false) {
         let contentRect = NSRect(origin: .zero, size: screen.frame.size)
         self.init(contentRect: contentRect, styleMask: .nonactivatingPanel, backing: .buffered, defer: false, screen: screen)

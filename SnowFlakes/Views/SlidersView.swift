@@ -1,9 +1,3 @@
-//
-//  SlidersView.swift
-//  SnowFlakes
-//
-//  Created by Tanner W. Stokes on 12/1/24.
-//
 import SwiftUI
 
 struct SlidersView: View {
