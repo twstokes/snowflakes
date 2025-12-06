@@ -1,11 +1,9 @@
 import Foundation
 
-final class SnowScene: BaseScene {
-    override init(size: CGSize) {
+final class EmitterScene: BaseScene {
+    init(size: CGSize, mode: EmitterMode) {
         super.init(size: size)
-
-        let emitter1 = SnowEmitter()
-        addEmitters(emitters: [emitter1])
+        addEmitters(emitters: mode.emitters)
     }
 
     @available(*, unavailable)

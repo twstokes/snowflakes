@@ -73,19 +73,15 @@ final class SnowRenderer {
 
         for screen in NSScreen.screens {
             let window = OverlayWindow(screen: screen, stayOnTop: appSettings.alwaysOnTop)
+            let skView = window.configureSKView(frame: screen.frame, preferredFPS: Int(appSettings.fps))
 
-            let view = SKView(frame: screen.frame)
-            view.preferredFramesPerSecond = Int(appSettings.fps)
-            view.allowsTransparency = true
-
-            let scene = appSettings.mode.scene(size: screen.frame.size)
+            let scene = EmitterScene(size: screen.frame.size, mode: appSettings.mode)
             for emitter in scene.emitters {
                 emitter.particleScale = CGFloat(appSettings.size / 10)
                 emitter.particleBirthRate = CGFloat(appSettings.birthRate)
             }
 
-            view.presentScene(scene)
-            window.contentView = view
+            skView.presentScene(scene)
             window.orderFrontRegardless()
         }
     }
@@ -96,7 +92,7 @@ final class SnowRenderer {
 
     func changeToMode(_ mode: EmitterMode, size: Float, birthRate: Float) {
         for activeSKView in activeSKViews {
-            let scene = mode.scene(size: activeSKView.frame.size)
+            let scene = EmitterScene(size: activeSKView.frame.size, mode: mode)
             for emitter in scene.emitters {
                 emitter.particleScale = CGFloat(size / 10)
                 emitter.particleBirthRate = CGFloat(birthRate)
@@ -115,16 +111,5 @@ final class SnowRenderer {
 
     func changeFps(_ fps: Float) {
         activeSKViews.forEach { $0.preferredFramesPerSecond = Int(fps) }
-    }
-}
-
-private extension EmitterMode {
-    func scene(size: CGSize) -> BaseScene {
-        switch self {
-        case .snow:
-            return SnowScene(size: size)
-        case .flakes:
-            return FlakeScene(size: size)
-        }
     }
 }
