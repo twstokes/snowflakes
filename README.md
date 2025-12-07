@@ -1,4 +1,4 @@
-# SnowFlakes!
+# SnowFlakes! ❄️
 
 At the end of 2021 I started playing with this app and then didn't touch it again until the end of 2022. It may very well be another seasonal project for me to hack on.
 
